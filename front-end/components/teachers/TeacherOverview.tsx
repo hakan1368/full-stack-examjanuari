@@ -25,6 +25,7 @@ const TeacherOverview: React.FC<Props> = ({ teachers }: Props) => {
               </tr>
             </thead>
             <tbody>
+              {/* Render a row for each teacher containing name and learning path */}
               {teachers.map((teacher, index) => (
                 <tr key={index}>
                   <td>
