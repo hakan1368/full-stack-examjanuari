@@ -31,7 +31,7 @@ const updateLearningPath = async (teacherId: number, learningPath: string): Prom
             include: {
                 user: true,
             },
-        });
+        }); 
         return Teacher.from(teacher);
     } catch (error) {
         throw new Error('Database error. See server log for details.');

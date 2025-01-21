@@ -8,6 +8,7 @@ import { expressjwt } from 'express-jwt';
 import { userRouter } from './controller/user.routes';
 import helmet from 'helmet';
 import { teacherRouter } from './controller/teacher.routes';
+import { classroomRouter } from './controller/classroom.routes';
 
 const app = express();
 app.use(helmet());
@@ -29,6 +30,8 @@ app.use(
             '/users/login',
             '/users/signup',
             '/status',
+            '/classroom',
+            '/classroom/add',
             '/teachers',
             /^\/teachers\/.*/,
             '/users',
@@ -38,6 +41,7 @@ app.use(
 
 app.use('/teachers', teacherRouter);
 app.use('/users', userRouter);
+app.use('/classroom', classroomRouter);
 
 app.get('/status', (req, res) => {
     res.json({ message: 'Exam API is running...' });

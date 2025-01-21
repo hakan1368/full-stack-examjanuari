@@ -1,5 +1,4 @@
-import { User } from './user';
-import { Teacher as TeacherPrisma, User as UserPrisma } from '@prisma/client';
+import { Classroom as ClassroomPrisma } from '@prisma/client';
 
 export class Classroom {
     readonly id?: number;
@@ -8,6 +7,17 @@ export class Classroom {
     constructor(classroom: { id?: number; name: string }) {
         this.id = classroom.id;
         this.name = classroom.name;
+        this.validate(classroom);
+    }
+
+    validate(classroom: { name: string }) {
+        if (!classroom.name.trim()) {
+            throw new Error('Name is required !');
+        }
+    }
+
+    equals({ id, name }: Classroom): boolean {
+        return this.id === id && this.name === name;
     }
 
     static from({ id, name }: { id?: number; name: string }): Classroom {
