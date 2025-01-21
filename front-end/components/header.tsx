@@ -25,14 +25,22 @@ const Header: React.FC = () => {
       <nav className="items-center flex md:flex-row flex-col">
         <Link
           href="/"
-          className=" px-4 text-xl text-white  hover:bg-gray-600 rounded-lg">
+          className=" px-4 text-xl text-white  hover:bg-gray-600 rounded-lg"
+        >
           {t('header.nav.home')}
+        </Link>
+        <Link
+          href="/teachers"
+          className=" px-4 text-xl text-white  hover:bg-gray-600 rounded-lg"
+        >
+          {t('header.nav.teachers')}
         </Link>
 
         {!loggedInUser && (
           <Link
             href="/login"
-            className="px-4  text-white text-xl hover:bg-gray-600 rounded-lg">
+            className="px-4  text-white text-xl hover:bg-gray-600 rounded-lg"
+          >
             {t('header.nav.login')}
           </Link>
         )}
@@ -40,7 +48,8 @@ const Header: React.FC = () => {
           <a
             href="/login"
             onClick={handleClick}
-            className="px-4  text-white text-xl hover:bg-gray-600 rounded-lg">
+            className="px-4  text-white text-xl hover:bg-gray-600 rounded-lg"
+          >
             {t('header.nav.logout')}
           </a>
         )}
