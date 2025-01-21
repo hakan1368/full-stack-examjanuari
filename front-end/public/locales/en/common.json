@@ -5,7 +5,7 @@
     "welcome": "Welcome",
     "nav": {
       "home": "Home",
-      "classrooms": "Classrooms",
+      "classrooms": "Add Classroom",
       "teachers": "Teachers",
       "add-teacher": "Add Teacher",
       "login": "Login",
@@ -25,5 +25,11 @@
   "home": {
     "title": "Good luck with the exam!",
     "description": ""
+  },
+  "classroom": {
+    "name": "Name",
+    "title": "Add classroom",
+    "add": "Add",
+    "success": "Added classroom with name {{name}}. "
   }
 }

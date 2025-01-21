@@ -4,6 +4,11 @@ export type Teacher = {
   learningPath: string;
 };
 
+export type Classroom = {
+  id?: number;
+  name: string;
+};
+
 export type User = {
   firstName?: string;
   lastName?: string;
