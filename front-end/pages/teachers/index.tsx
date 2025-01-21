@@ -7,7 +7,11 @@ import useSWR from 'swr';
 
 const Teachers: React.FC = () => {
   const fetcher = async (key: string) => {
-    /* Use the TeacherService to fetch all teachers */
+    const response = await Promise.all([TeacherService.getAllTeachers()]);
+    const [teacherResponse] = response;
+    const teachers = await teacherResponse.json();
+
+    return { teachers };
   };
 
   const { data, isLoading, error } = useSWR('Teachers', fetcher);
@@ -24,7 +28,7 @@ const Teachers: React.FC = () => {
         <section className="mt-5">
           {error && <p className="text-danger">{error}</p>}
           {isLoading && <p>Loading...</p>}
-          {/* Use the TeacherOverview component to render data */}
+          {data && <TeacherOverview teachers={data.teachers} />}
         </section>
       </main>
     </>
