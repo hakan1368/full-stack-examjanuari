@@ -1,6 +1,7 @@
 {
   "app.title": "Exam App",
   "general.error": "An error has occurred. Please try again later.",
+  "unauthorized": "You are not authorized to view this page",
   "header": {
     "welcome": "Welcome",
     "nav": {
@@ -28,8 +29,9 @@
   },
   "classroom": {
     "name": "Name",
-    "title": "Add classroom",
+    "title": "Classroom",
     "add": "Add",
-    "success": "Added classroom with name {{name}}. "
+    "success": "Added classroom with name   ",
+    "exists": "Classroom already exists. "
   }
 }

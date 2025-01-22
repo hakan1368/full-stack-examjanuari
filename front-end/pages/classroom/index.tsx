@@ -16,7 +16,7 @@ const Classroom: React.FC = () => {
     if (!loggedInUser) {
       setStatusMessages([
         {
-          message: t('Error', 'You are not authorized to view this page'),
+          message: t('Error', t('unauthorized')),
           type: 'error',
         },
       ]);
@@ -25,7 +25,7 @@ const Classroom: React.FC = () => {
   return (
     <>
       <Head>
-        <title>{t('')}</title>
+        <title>{t('classroom.title')}</title>
       </Head>
       <Header />
       <main>

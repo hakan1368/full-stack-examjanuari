@@ -1,28 +1,37 @@
 {
-  "app.title": "Examen App",
-  "general.error": "Se ha producido un error. Vuelva a intentarlo más tarde.",
+  "app.title": "Aplicación de Exámenes",
+  "general.error": "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.",
+  "unauthorized": "No está autorizado para ver esta página",
   "header": {
     "welcome": "Bienvenido",
     "nav": {
       "home": "Inicio",
-      "teams": "Grupos",
-      "coaches": "Entrenadores",
-      "login": "Conéctese",
-      "logout": "Cerrar sesión"
+      "classrooms": "Agregar Aula",
+      "teachers": "Profesores",
+      "add-teacher": "Agregar Profesor",
+      "login": "Iniciar Sesión",
+      "logout": "Cerrar Sesión"
     }
   },
   "login": {
-    "title": "Inicio de sesión",
-    "button": "Conéctese",
-    "success": "Inicio de sesión exitoso. Redirigiendo a la página de inicio...",
+    "title": "Iniciar Sesión",
+    "button": "Iniciar Sesión",
+    "success": "Inicio de sesión exitoso. Redirigiendo a la página principal...",
     "validate": {
-      "name": "Nombre obligatorio",
-      "password": "Se requiere contraseña"
+      "name": "El nombre es obligatorio",
+      "password": "La contraseña es obligatoria"
     },
     "label": { "username": "Nombre de usuario:", "password": "Contraseña:" }
   },
   "home": {
-    "title": "Bienvenido!",
-    "description": "Cursos le permite ver como profesor todos los cursos que está impartiendo y como alumno todos los cursos en los que está matriculado. También puede ver cuándo están programados los cursos y los alumnos matriculados en cada curso."
+    "title": "¡Buena suerte con el examen!",
+    "description": ""
+  },
+  "classroom": {
+    "name": "Nombre",
+    "title": "Aula",
+    "add": "Agregar",
+    "success": "Aula añadida con el nombre ",
+    "exists": "El aula ya existe. "
   }
 }

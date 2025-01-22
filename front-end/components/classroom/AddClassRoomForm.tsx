@@ -26,7 +26,7 @@ const AddClassRoomForm: React.FC = () => {
       if (existingClassRoom) {
         setStatusMessages([
           {
-            message: `Classroom with name "${name}" already exists.`,
+            message: t('classroom.exists'),
             type: 'error',
           },
         ]);
@@ -48,7 +48,7 @@ const AddClassRoomForm: React.FC = () => {
     const response = await ClassroomService.addClassroom(classroom);
     if (response.status === 200) {
       setStatusMessages([
-        { message: `Added classroom with name ${name} `, type: 'success' },
+        { message: `${t('classroom.success')} ${name}`, type: 'success' },
       ]);
     }
   };
@@ -56,7 +56,7 @@ const AddClassRoomForm: React.FC = () => {
   return (
     <div className="max-w-sm m-auto">
       <div>
-        <h3 className="px-0">{'Add Classroom'}</h3>
+        <h3 className="px-0"> {t('header.nav.classrooms')}</h3>
         {statusMessages && (
           <div className="row">
             <ul className="list-none mb-3 mx-auto ">
@@ -81,7 +81,7 @@ const AddClassRoomForm: React.FC = () => {
               className="block mb-2 text-sm font-medium"
             >
               {' '}
-              {'Name'}
+              {t('classroom.name')}
             </label>
           </div>
           <div className="block mb-2 text-sm font-medium">
@@ -99,7 +99,7 @@ const AddClassRoomForm: React.FC = () => {
               className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               type="submit"
             >
-              {'Add'}
+              {t('classroom.add')}
             </button>
           </div>
         </form>
