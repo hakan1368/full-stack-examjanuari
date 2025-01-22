@@ -33,7 +33,7 @@ const Classroom: React.FC = () => {
           {loggedInUser && loggedInUser.role === 'admin' ? (
             <AddClassRoomForm />
           ) : (
-            <div className="text-red-800">
+            <div className="text-red-800 text-center">
               {statusMessages.map((msg, index) => (
                 <p key={index}>{msg.message}</p>
               ))}
