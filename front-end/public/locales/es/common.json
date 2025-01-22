@@ -32,6 +32,7 @@
     "title": "Aula",
     "add": "Agregar",
     "success": "Aula añadida con el nombre ",
-    "exists": "El aula ya existe. "
+    "exists": "El aula ya existe. ",
+    "id": "y ID "
   }
 }

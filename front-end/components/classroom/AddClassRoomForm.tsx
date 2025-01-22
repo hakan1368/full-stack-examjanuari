@@ -9,6 +9,7 @@ const AddClassRoomForm: React.FC = () => {
   const [name, setName] = useState('');
   const [statusMessages, setStatusMessages] = useState<StatusMessage[]>([]);
   const [nameError, setNameError] = useState(null);
+  const [classroomId, setClassroomId] = useState<number | null>(null);
 
   const clearErrors = () => {
     setNameError(null);
@@ -46,9 +47,18 @@ const AddClassRoomForm: React.FC = () => {
     }
     const classroom = { name };
     const response = await ClassroomService.addClassroom(classroom);
+
     if (response.status === 200) {
+      const responseBody = await response.json();
+      const id = responseBody.id;
+      setClassroomId(id);
       setStatusMessages([
-        { message: `${t('classroom.success')} ${name}`, type: 'success' },
+        {
+          message: `${t('classroom.success')} ${name} ${t(
+            'classroom.id'
+          )} ${classroomId}`,
+          type: 'success',
+        },
       ]);
     }
   };

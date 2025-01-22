@@ -32,6 +32,7 @@
     "title": "Classroom",
     "add": "Add",
     "success": "Added classroom with name   ",
-    "exists": "Classroom already exists. "
+    "exists": "Classroom already exists. ",
+    "id": "and ID "
   }
 }
