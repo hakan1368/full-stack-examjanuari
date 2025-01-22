@@ -35,12 +35,14 @@ const Header: React.FC = () => {
         >
           {t('header.nav.teachers')}
         </Link>
-        <Link
-          href="/classroom"
-          className=" px-4 text-xl text-white  hover:bg-gray-600 rounded-lg"
-        >
-          {t('header.nav.classrooms')}
-        </Link>
+        {loggedInUser && loggedInUser.role === 'admin' && (
+          <Link
+            href="/classroom"
+            className=" px-4 text-xl text-white  hover:bg-gray-600 rounded-lg"
+          >
+            {t('header.nav.classrooms')}
+          </Link>
+        )}
 
         {!loggedInUser && (
           <Link

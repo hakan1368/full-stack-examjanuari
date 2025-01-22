@@ -8,12 +8,9 @@ type Props = {
 
 const TeacherOverview: React.FC<Props> = ({ teachers }: Props) => {
   const [loggedInUser, setLoggedInUser] = useState<User>(null);
-  const [userRole, setUserRole] = useState<string | null>(null);
 
   useEffect(() => {
     setLoggedInUser(JSON.parse(sessionStorage.getItem('loggedInUser')));
-    const user = JSON.parse(sessionStorage.getItem('loggedInUser'));
-    setUserRole(user.role);
   }, []);
 
   return (
@@ -36,7 +33,7 @@ const TeacherOverview: React.FC<Props> = ({ teachers }: Props) => {
                   </td>
                   <td>
                     {/* For question 1.c, you can use the LearningPath component. */}
-                    {userRole === 'admin' ? (
+                    {loggedInUser && loggedInUser.role === 'admin' ? (
                       <LearningPath
                         teacherId={teacher.id}
                         learningPath={teacher.learningPath}

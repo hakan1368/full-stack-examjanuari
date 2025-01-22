@@ -26,7 +26,7 @@ const classroomRouter = express.Router();
 
 /**
  * @swagger
- * /classroom/add:
+ * /classroom:
  *   post:
  *     security:
  *     - bearerAuth: []
@@ -44,13 +44,17 @@ const classroomRouter = express.Router();
  *           application/json:
  *              $ref: '#/components/schemas/Classroom'
  */
-classroomRouter.post('/add', async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const classroomInput = <Classroom>req.body;
-        const classroom = await classRoomService.addClassroom(classroomInput);
-        res.status(200).json(classroom);
-    } catch (error) {
-        next(error);
+classroomRouter.post(
+    '/',
+    async (req: Request & { auth: any }, res: Response, next: NextFunction) => {
+        try {
+            const { username, role } = req.auth;
+            const classroomInput = <Classroom>req.body;
+            const classroom = await classRoomService.addClassroom(classroomInput);
+            res.status(200).json(classroom);
+        } catch (error) {
+            next(error);
+        }
     }
-});
+);
 export { classroomRouter };

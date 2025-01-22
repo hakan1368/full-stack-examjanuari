@@ -8,15 +8,38 @@ const AddClassRoomForm: React.FC = () => {
   const { t } = useTranslation();
   const [name, setName] = useState('');
   const [statusMessages, setStatusMessages] = useState<StatusMessage[]>([]);
+  const [nameError, setNameError] = useState(null);
+
+  const validate = (): boolean => {
+    let res = true;
+    if (!name && name.trim() === '') {
+      setNameError(t('login.validate.name'));
+      res = false;
+    }
+
+    return res;
+  };
+
+  const clearErrors = () => {
+    setNameError(null);
+    setStatusMessages([]);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    clearErrors();
+
+    if (!validate()) {
+      return;
+    }
     const classroom = { name };
     const response = await ClassroomService.addClassroom(classroom);
     if (response.status === 200) {
       setStatusMessages([
         { message: `Added classroom with name ${name}`, type: 'success' },
       ]);
+    } else {
+      setStatusMessages([{ message: `Error adding classroom`, type: 'error' }]);
     }
   };
 
@@ -59,6 +82,7 @@ const AddClassRoomForm: React.FC = () => {
               className="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue:500 block w-full p-2.5"
               value={name}
             />
+            {nameError && <div className="text-red-800 ">{nameError}</div>}
           </div>
           <div className="row">
             <button
