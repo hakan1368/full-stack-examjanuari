@@ -10,19 +10,31 @@ const AddClassRoomForm: React.FC = () => {
   const [statusMessages, setStatusMessages] = useState<StatusMessage[]>([]);
   const [nameError, setNameError] = useState(null);
 
-  const validate = (): boolean => {
-    let res = true;
-    if (!name && name.trim() === '') {
-      setNameError(t('login.validate.name'));
-      res = false;
-    }
-
-    return res;
-  };
-
   const clearErrors = () => {
     setNameError(null);
     setStatusMessages([]);
+  };
+
+  const validate = async (): Promise<boolean> => {
+    let res = true;
+
+    if (!name && name.trim() === '') {
+      setNameError(t('login.validate.name'));
+      res = false;
+    } else {
+      const existingClassRoom = await ClassroomService.getClassroomByName(name);
+      if (existingClassRoom) {
+        setStatusMessages([
+          {
+            message: `Classroom with name "${name}" already exists.`,
+            type: 'error',
+          },
+        ]);
+        res = false;
+      }
+    }
+
+    return res;
   };
 
   const handleSubmit = async (event) => {
@@ -36,10 +48,8 @@ const AddClassRoomForm: React.FC = () => {
     const response = await ClassroomService.addClassroom(classroom);
     if (response.status === 200) {
       setStatusMessages([
-        { message: `Added classroom with name ${name}`, type: 'success' },
+        { message: `Added classroom with name ${name} `, type: 'success' },
       ]);
-    } else {
-      setStatusMessages([{ message: `Error adding classroom`, type: 'error' }]);
     }
   };
 

@@ -16,10 +16,7 @@ const Classroom: React.FC = () => {
     if (!loggedInUser) {
       setStatusMessages([
         {
-          message: t(
-            'error.notLoggedIn',
-            'You are not authorized to view this page'
-          ),
+          message: t('Error', 'You are not authorized to view this page'),
           type: 'error',
         },
       ]);
@@ -36,7 +33,7 @@ const Classroom: React.FC = () => {
           {loggedInUser && loggedInUser.role === 'admin' ? (
             <AddClassRoomForm />
           ) : (
-            <div className="text-red-500">
+            <div className="text-red-800">
               {statusMessages.map((msg, index) => (
                 <p key={index}>{msg.message}</p>
               ))}
